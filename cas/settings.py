@@ -20,10 +20,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9alm%7ty(*%)$$wanj5!k&vg_x#=3^*d^k*==t2*!7(6m-#ji&'
+try:
+    SECRET_KEY = os.environ['SECRET_KEY']
+except KeyError:
+    SECRET_KEY = '9alm%7ty(*%)$$wanj5!k&vg_x#=3^*d^k*==t2*!7(6m-#ji&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+    DEBUG = os.environ['DEBUG_SETTING']  # Only true on production server
+except KeyError:
+    DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'journal',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -66,6 +73,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+DIRS = [
+    os.path.join(BASE_DIR, 'templates'),
 ]
 
 WSGI_APPLICATION = 'cas.wsgi.application'
