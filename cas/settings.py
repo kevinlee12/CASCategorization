@@ -1,3 +1,4 @@
+# pylint: disable=C0301
 """
 Django settings for cas project.
 

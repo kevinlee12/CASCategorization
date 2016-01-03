@@ -1,14 +1,16 @@
+#!/usr/bin/python3
+"""Utilities for CASegorizer"""
 import argparse
 import csv
 import pickle
 import os
 
-_parser = argparse.ArgumentParser(description='Processes training set.')
-_parser.add_argument('--file', type=str, required=True,
+_PARSER = argparse.ArgumentParser(description='Processes training set.')
+_PARSER.add_argument('--file', type=str, required=True,
                      help='filename containing training set or pickled file')
-_parser.add_argument('--save', action='store_true',
+_PARSER.add_argument('--save', action='store_true',
                      help='save the pickled data to particular file')
-_parser.add_argument('--load', action='store_true',
+_PARSER.add_argument('--load', action='store_true',
                      help='load the pickled data from particular file')
 
 
@@ -24,8 +26,8 @@ def load(filename):
          - Lists of Activity Types
     """
     assert type(filename) == str, 'Filename must be a str'
-    with open(filename, 'rb') as f:
-        elements = pickle.load(f)
+    with open(filename, 'rb') as loader:
+        elements = pickle.load(loader)
 
     assert type(elements) == tuple, 'Element is not valid!'
     assert len(elements) == 2, 'Element is not valid!'
@@ -50,11 +52,11 @@ def save(elements, filename):
     assert filename.endswith('.pkl'), 'File must be pkl!'
     assert type(elements) == tuple, 'Element must be a tuple!'
     assert len(elements) == 2, 'Tuple must be of length 2!'
-    assert len(elements[0]) == len(elements[1]), 'Elements do not have same length!'
+    assert len(elements[0]) == len(elements[1]), 'Elements not equal length!'
     assert type(elements[0]) == list, 'First element must be a list!'
     assert type(elements[1]) == list, 'Second element must be a list!'
-    with open(filename, 'wb') as f:
-        pickle.dump(elements, f)
+    with open(filename, 'wb') as dump:
+        pickle.dump(elements, dump)
     return
 
 
@@ -82,15 +84,20 @@ def extractor(filename):
     return (activity_names, activity_types)
 
 
-if __name__ == '__main__':
-    parse_args = _parser.parse_args()
+def main():
+    """Main function of utils.py"""
+    parse_args = _PARSER.parse_args()
     if parse_args.save:
         csv_file = parse_args.file
         data = extractor(csv_file)
-        save(data, os.path.realpath(
-             os.path.join(os.path.dirname(csv_file), 'data.pkl')))
+        save(data, os.path.realpath(os.path.join(os.path.dirname(csv_file),
+                                    'data.pkl')))
     elif parse_args.load:
         pkl_file = parse_args.file
         data = load(pkl_file)
     else:
         print('Nothing happened')
+
+
+if __name__ == '__main__':
+    main()
