@@ -6,11 +6,11 @@ import pickle
 import os
 
 _PARSER = argparse.ArgumentParser(description='Processes training set.')
-_PARSER.add_argument('--file', type=str, required=True,
+_PARSER.add_argument('-f', '--file', type=str, required=True,
                      help='filename containing training set or pickled file')
-_PARSER.add_argument('--save', action='store_true',
+_PARSER.add_argument('-s', '--save', action='store_true',
                      help='save the pickled data to particular file')
-_PARSER.add_argument('--load', action='store_true',
+_PARSER.add_argument('-l', '--load', action='store_true',
                      help='load the pickled data from particular file')
 
 
