@@ -14,9 +14,6 @@ test:
   pre:
     - source activate cas
     - python manage.py collectstatic --noinput
-  override:
-    # TODO: Write a test runner
-    - python manage.py test journal.tests
 
 # TODO
 # test:
