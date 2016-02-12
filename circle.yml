@@ -1,0 +1,26 @@
+machine:
+  environment:
+      DATABASE_URL: 'postgres://ubuntu:@127.0.0.1:5432/circle_test'
+  python:
+    version: 3.5.0
+  services:
+    - postgresql
+
+dependencies:
+  pre:
+    - bash scripts/conda_circle_setup.sh
+
+test:
+  pre:
+    - source activate cas
+    - python manage.py collectstatic --noinput
+  override:
+    # TODO: Write a test runner
+    - python manage.py test journal.tests
+
+# TODO
+# test:
+#   override:
+#     - coverage run manage.py test
+#   post:
+#     - coverage html -d $CIRCLE_ARTIFACTS

@@ -1,3 +1,10 @@
+# To run this, install pylint and use the command:
+#
+#   pylint core --rcfile=.pylintrc -i y
+
+[GENERAL]
+init-hook='import sys; sys.path.append("../oppia_tools/google_appengine_1.9.19/google_appengine")'
+
 [BASIC]
 
 # Regular expression which should only match correct function names
@@ -25,6 +32,8 @@ bad-functions=apply,input
 
 [FORMAT]
 
+max-line-length=80
+
 indent-string='    '
 
 [SIMILARITIES]
@@ -32,7 +41,10 @@ indent-string='    '
 ignore-imports=yes
 
 [MESSAGES CONTROL]
-disable=C0330
 
-[MASTER]
-ignore=cas/settings.py
+disable=locally-disabled,locally-enabled,logging-not-lazy,abstract-method,arguments-differ,broad-except,duplicate-code,fixme,missing-docstring,no-member,no-self-use,redefined-variable-type,too-many-arguments,too-many-boolean-expressions,too-many-branches,too-many-instance-attributes,too-many-lines,too-many-locals,too-many-public-methods,too-many-statements
+
+[REPORTS]
+
+# Hide statistics, external dependencies and overall rating.
+reports=no
