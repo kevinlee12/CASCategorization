@@ -1,5 +1,5 @@
 # coding: utf-8
-# pylint: disable=W0401, C0111
+#
 # Copyright 2015 The WildCAS Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Place all imports here, in alphabetical order
-# Naming convention: <model name>_models.py
+from django.db import models
 
-from journal.models.entry_model import *
-from journal.models.activity_model import *
+
+class Entry(models.Model):
+    """The Entry model that stores the student activity"""
+    entry = models.TextField()
