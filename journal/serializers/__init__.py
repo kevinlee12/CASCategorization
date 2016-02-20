@@ -15,3 +15,4 @@
 # limitations under the License.
 
 from .activity_serializer import *
+from .person_serializers import *
