@@ -18,6 +18,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 
+
 class School(Group):
     """Representation of a school."""
     school_id = models.CharField(max_length=6)
@@ -26,13 +27,15 @@ class School(Group):
     state = models.TextField("State/province")
     country = models.TextField()
 
+
 class Person(User):
     class Meta:
         abstract = True
     school = models.ForeignKey(School, null=True)
 
+
 class Coordinator(Person):
-    coordinator_type = models.IntegerField() 
+    coordinator_type = models.IntegerField()
 
 
 class Advisor(Person):
@@ -47,6 +50,3 @@ class Student(Person):
     grad_year = models.IntegerField()
     student_advisor = models.ForeignKey(Advisor, null=True)
     student_coordinator = models.ForeignKey(Coordinator, null=True)
-
-
-

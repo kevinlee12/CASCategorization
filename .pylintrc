@@ -1,3 +1,6 @@
+[GENERAL]
+init-hook='import sys; sys.path.append("..")'
+
 [BASIC]
 
 # Regular expression which should only match correct function names
@@ -14,6 +17,9 @@ good-names=e,_,d,f,i,l,p,w,fn,fs,id,pc,sc,zf,setUp,tearDown,longMessage,maxDiff
 
 # Regex for dummy variables (to prevent 'unused argument' errors)
 dummy-variables-rgx=_|unused_*
+
+# Ignore files or directories
+ignore=migrations
 
 [DESIGN]
 
@@ -35,7 +41,7 @@ ignore-imports=yes
 
 [MESSAGES CONTROL]
 
-disable=locally-disabled,locally-enabled,logging-not-lazy,abstract-method,arguments-differ,broad-except,duplicate-code,fixme,missing-docstring,no-member,no-self-use,redefined-variable-type,too-many-arguments,too-many-boolean-expressions,too-many-branches,too-many-instance-attributes,too-many-lines,too-many-locals,too-many-public-methods,too-many-statements
+disable=locally-disabled,locally-enabled,logging-not-lazy,abstract-method,arguments-differ,broad-except,duplicate-code,fixme,no-member,no-self-use,redefined-variable-type,too-many-arguments,too-many-boolean-expressions,too-many-branches,too-many-instance-attributes,too-many-lines,too-many-locals,too-many-public-methods,too-many-statements,no-init,old-style-class,missing-docstring
 
 [REPORTS]
 

@@ -1,4 +1,4 @@
-# pylint: disable=C0301
+# pylint: disable=line-too-long
 """
 Django settings for cas project.
 

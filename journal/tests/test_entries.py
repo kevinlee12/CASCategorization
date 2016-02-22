@@ -1,5 +1,5 @@
 from django.test import TestCase
-from journal.models import Activity, Entry
+from journal.models import Entry
 
 
 class EntryTestCase(TestCase):
