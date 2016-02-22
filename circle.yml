@@ -7,12 +7,15 @@ machine:
     - postgresql
 
 dependencies:
+  cache_directories:
+    - ~/miniconda
+
   pre:
     - bash scripts/conda_circle_setup.sh
+    - source activate cas
 
 test:
   pre:
-    - source activate cas
     - python manage.py collectstatic --noinput
 
 # TODO

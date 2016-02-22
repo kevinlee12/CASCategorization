@@ -24,6 +24,11 @@ Because of the limitations of Heroku, this application will be employing
     `conda install -n cas scipy`.
 7. Install the pip requirements: `pip install -r requirements.txt`
 
+## Package/Requirements File:
+Pip is our main package management file, as such, please install packages using
+Pip whenever possible. Thus, when executing `pip freeze > requirements.txt`,
+please ensure that the requirements.txt file does **not** have scipy.
+
 ### TODO:
 - Setup script for Conda setup
 
