@@ -35,11 +35,11 @@ class Person(User):
 
 
 class Coordinator(Person):
-    coordinator_type = models.IntegerField()
+    coordinator_type = models.IntegerField() # Diploma, middle, elementary
 
 
 class Advisor(Person):
-    advisor_type = models.IntegerField()
+    advisor_type = models.IntegerField() # Diploma, middle, elementary
     advisor_coordinator = models.ForeignKey(Coordinator, null=True)
 
 
@@ -47,6 +47,7 @@ class Student(Person):
     """The students that will be using the site."""
     personal_code = models.CharField(max_length=6)
     student_id = models.CharField(max_length=4)
+    grad_month = models.IntegerField()
     grad_year = models.IntegerField()
     student_advisor = models.ForeignKey(Advisor, null=True)
     student_coordinator = models.ForeignKey(Coordinator, null=True)
