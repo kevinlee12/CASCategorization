@@ -11,7 +11,7 @@ class ActivityTestCase(TestCase):
         cat_e = Entry.objects.create(entry='I like walking the cat')
         Activity.objects.create(name='Walking the cat',
                                 description='Walking the cat around the block',
-                                activity_type='CA', learning_obj='123',
+                                activity_type=[1, 2], learning_obj=[1, 2, 3],
                                 entries=cat_e,
                                 start_date=datetime.date.today)
 
