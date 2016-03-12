@@ -9,7 +9,6 @@ class StudentTestCase(TestCase):
                                          last_name='Cassich',
                                          personal_code='123456',
                                          student_id='4200',
-                                         grad_month=5,
                                          grad_year=2016,
                                          student_advisor=None,
                                          student_coordinator=None)
