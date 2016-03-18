@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'debug_toolbar',
     'django_nose',
+    'localflavor',
     'rest_framework',
 ]
 

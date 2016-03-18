@@ -1,5 +1,6 @@
 from django.db import models
 from .entry_model import Entry
+import localflavor
 
 
 class Activity(models.Model):
@@ -12,6 +13,14 @@ class Activity(models.Model):
     start_date = models.DateField(auto_now=True)
     end_date = models.DateField(blank=True, null=True)
     entries = models.ForeignKey(Entry, on_delete=models.CASCADE)
+
+    # Activity advisor information.
+    # This is different from the school advisor, which has a model!
+    advisor_name = models.CharField(max_length=30)
+    advisor_title = models.CharField(max_length=30)
+    advisor_email = models.EmailField()
+    advisor_phone = localflavor.us.models.PhoneNumberField()
+
 
     class Meta:
         ordering = ('start_date',)
