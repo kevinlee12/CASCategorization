@@ -1,6 +1,6 @@
 from django.db import models
 from .entry_model import Entry
-import localflavor
+from localflavor.us import models as localflavor_models
 
 
 class Activity(models.Model):
@@ -19,7 +19,7 @@ class Activity(models.Model):
     advisor_name = models.CharField(max_length=30)
     advisor_title = models.CharField(max_length=30)
     advisor_email = models.EmailField()
-    advisor_phone = localflavor.us.models.PhoneNumberField()
+    advisor_phone = localflavor_models.PhoneNumberField()
 
 
     class Meta:

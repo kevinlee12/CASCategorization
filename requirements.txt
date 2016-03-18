@@ -8,7 +8,9 @@ Django==1.9.4
 django-allauth==0.24.1
 django-debug-toolbar==1.4
 django-filter==0.13.0
+django-localflavor==1.2
 django-nose==1.4.3
+django-tinymce==2.3.0
 django-toolbelt==0.0.1
 djangorestframework==3.3.2
 gunicorn==19.4.5
