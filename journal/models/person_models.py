@@ -31,7 +31,7 @@ class School(Group):
 class Person(User):
     class Meta:
         abstract = True
-    school = models.ForeignKey(School, null=True)
+    school = models.ForeignKey(School)
 
 
 class Coordinator(Person):
@@ -40,7 +40,7 @@ class Coordinator(Person):
 
 class Advisor(Person):
     advisor_type = models.IntegerField() # Diploma, middle, elementary
-    advisor_coordinator = models.ForeignKey(Coordinator, null=True)
+    advisor_coordinator = models.ForeignKey(Coordinator)
 
 
 class Student(Person):
