@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'django_nose',
     'localflavor',
     'rest_framework',
+    'tinymce',
 ]
 
 SITE_ID = 1

@@ -15,8 +15,9 @@
 # limitations under the License.
 
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class Entry(models.Model):
     """The Entry model that stores the student activity"""
-    entry = models.TextField()
+    entry = HTMLField()
