@@ -13,6 +13,8 @@ django-nose==1.4.3
 django-tinymce==2.3.0
 django-toolbelt==0.0.1
 djangorestframework==3.3.2
+factory-boy==2.6.1
+fake-factory==0.5.7
 gunicorn==19.4.5
 lazy-object-proxy==1.2.1
 Markdown==2.6.5
@@ -25,6 +27,7 @@ psycopg2==2.6.1
 pylint==1.5.4
 pylint-django==0.7.1
 pylint-plugin-utils==0.2.3
+python-dateutil==2.5.1
 python3-openid==3.0.9
 requests==2.9.1
 requests-oauthlib==0.6.1

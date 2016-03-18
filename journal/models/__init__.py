@@ -17,6 +17,5 @@
 # Place all imports here, in alphabetical order
 # Naming convention: <model name>_models.py
 
-from journal.models.entry_model import Entry
-from journal.models.activity_model import Activity
+from journal.models.activity_model import Activity, Entry
 from journal.models.person_models import School, Coordinator, Advisor, Student
