@@ -25,3 +25,6 @@ if [ $CACHED == 0 ]; then
   echo "Creating cas environment"
   conda env create -f environment.yml
 fi
+
+echo "Updating Conda env"
+conda env update
