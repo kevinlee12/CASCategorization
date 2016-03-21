@@ -1,5 +1,5 @@
 [GENERAL]
-init-hook='import sys; sys.path.append("..")'
+init-hook='import sys; import os; sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir))); sys.path.append("~/miniconda3/envs/cas/lib/python3.5/site-packages/");'
 
 [BASIC]
 
@@ -20,6 +20,9 @@ dummy-variables-rgx=_|unused_*
 
 # Ignore files or directories
 ignore=migrations
+
+[TYPECHECK]
+generated-members=REQUEST,acl_users,aq_parent,objects,_meta,id
 
 [DESIGN]
 

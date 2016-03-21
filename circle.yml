@@ -17,6 +17,7 @@ dependencies:
 test:
   pre:
     - python manage.py collectstatic --noinput
+    - python scripts/linter.py
 
 # TODO
 # test:

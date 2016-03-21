@@ -1,6 +1,5 @@
 from django.db import models
 from tinymce.models import HTMLField
-from localflavor.us import models as localflavor_models
 
 
 class Activity(models.Model):
@@ -19,7 +18,8 @@ class Activity(models.Model):
     advisor_title = models.CharField(max_length=30, blank=True)
     advisor_email = models.EmailField(blank=True)
     advisor_phone = models.CharField(max_length=12, blank=True)
-    # advisor_phone = localflavor_models.PhoneNumberField(blank=True) # TODO: Move this to form validation
+    # TODO: Move field to form validation
+    # advisor_phone = localflavor_models.PhoneNumberField(blank=True)
 
 
     class Meta:

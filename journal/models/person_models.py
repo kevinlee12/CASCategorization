@@ -50,4 +50,5 @@ class Student(Person):
     grad_month = models.IntegerField()
     grad_year = models.IntegerField()
     student_advisor = models.ForeignKey(Advisor, null=True)
-    student_coordinator = models.ForeignKey(Coordinator, null=True) # TODO: Remove null
+    # TODO: Remove null from the following field
+    student_coordinator = models.ForeignKey(Coordinator, null=True)

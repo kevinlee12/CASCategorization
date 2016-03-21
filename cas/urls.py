@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 """cas URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

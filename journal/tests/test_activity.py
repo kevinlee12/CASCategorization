@@ -12,7 +12,8 @@ class ActivityTestCase(SimpleTestCase):
         """Tests to ensure that the model can be populated fully"""
         cat_activity = factory.build(dict, FACTORY_CLASS=ActivityFactory,
                                      name='Walking the cat',
-                                     description='Walking the cat around the block',
+                                     description='Walking the cat around'
+                                                 'the block',
                                      activity_type='1', learning_obj='1,2,3',
                                      start_date=datetime.date.today,
                                      advisor_name='Cat',

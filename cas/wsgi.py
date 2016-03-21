@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 """
 WSGI config for cas project.
 
