@@ -4,6 +4,12 @@
     <title>Hi!</title>
   </head>
   <body>
-    <h1>Hi!</h1>
+    <h1>{{ text }}</h1>
+    The following links are avalible to use:
+    <ul>
+    {% for link in links %}
+        <li> <a href="{{ link }}">{{ link }}</a> </li>
+    {% endfor %}
+    </ul>
   </body>
 </html>
