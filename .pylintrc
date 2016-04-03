@@ -1,5 +1,5 @@
 [GENERAL]
-init-hook='import sys; sys.path.append("..")'
+init-hook='import sys; import os; sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir))); sys.path.append("~/miniconda3/envs/cas/lib/python3.5/site-packages/");'
 
 [BASIC]
 
@@ -21,6 +21,9 @@ dummy-variables-rgx=_|unused_*
 # Ignore files or directories
 ignore=migrations
 
+[TYPECHECK]
+generated-members=REQUEST,acl_users,aq_parent,objects,_meta,id
+
 [DESIGN]
 
 # Minimum number of public methods for a class (see R0903).
@@ -41,7 +44,7 @@ ignore-imports=yes
 
 [MESSAGES CONTROL]
 
-disable=locally-disabled,locally-enabled,logging-not-lazy,abstract-method,arguments-differ,broad-except,duplicate-code,fixme,no-member,no-self-use,redefined-variable-type,too-many-arguments,too-many-boolean-expressions,too-many-branches,too-many-instance-attributes,too-many-lines,too-many-locals,too-many-public-methods,too-many-statements,no-init,old-style-class,missing-docstring
+disable=locally-disabled,locally-enabled,logging-not-lazy,abstract-method,arguments-differ,broad-except,duplicate-code,fixme,no-member,no-self-use,redefined-variable-type,too-many-arguments,too-many-boolean-expressions,too-many-branches,too-many-instance-attributes,too-many-lines,too-many-locals,too-many-public-methods,too-few-public-methods,too-many-statements,no-init,old-style-class,missing-docstring
 
 [REPORTS]
 

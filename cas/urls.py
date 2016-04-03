@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 """cas URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -20,4 +21,6 @@ from django.conf.urls import include, url
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('journal.urls')),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]

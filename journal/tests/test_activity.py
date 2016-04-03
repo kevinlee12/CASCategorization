@@ -1,24 +1,39 @@
 import datetime
+import factory
 
-from django.test import TestCase
-from journal.models import Activity, Entry
-from journal.serializers import ActivitySerializer
+from django.test import SimpleTestCase
+from journal.tests.factories import ActivityFactory
 
 
-class ActivityTestCase(TestCase):
+class ActivityTestCase(SimpleTestCase):
     """Sanity checks for activity"""
-    def setUp(self):
-        cat_e = Entry.objects.create(entry='I like walking the cat')
-        Activity.objects.create(name='Walking the cat',
-                                description='Walking the cat around the block',
-                                activity_type='1', learning_obj='1,2,3',
-                                entries=cat_e,
-                                start_date=datetime.date.today)
 
-    def test_activity_serializer(self):
-        cat_activity = Activity.objects.get(name='Walking the cat')
-        self.assertEqual(cat_activity.name, 'Walking the cat')
-
-        cat_serializer = ActivitySerializer(cat_activity)
-        self.assertEqual(cat_serializer.data['description'],
+    def test_activity_full_field(self):
+        """Tests to ensure that the model can be populated fully"""
+        cat_activity = factory.build(dict, FACTORY_CLASS=ActivityFactory,
+                                     name='Walking the cat',
+                                     description='Walking the cat around '
+                                                 'the block',
+                                     activity_type='1', learning_obj='1,2,3',
+                                     start_date=datetime.date.today,
+                                     advisor_name='Cat',
+                                     advisor_title='The Great Meow',
+                                     advisor_email='lion@cat.awe',
+                                     advisor_phone='737-041-5511')
+        self.assertEqual(cat_activity['name'], 'Walking the cat')
+        self.assertEqual(cat_activity['description'],
                          'Walking the cat around the block')
+        self.assertEqual(cat_activity['advisor_email'],
+                         'lion@cat.awe')
+        self.assertEqual(cat_activity['advisor_phone'],
+                         '737-041-5511')
+
+    def test_no_advisor(self):
+        """Tests that the advisor field can be left blank."""
+        nothing = factory.build(dict, FACTORY_CLASS=ActivityFactory,
+                                name='Nothing',
+                                description='Nothing',
+                                activity_type='1', learning_obj='1',
+                                start_date=datetime.date.today)
+        self.assertEqual(nothing['name'], 'Nothing')
+        self.assertEqual(nothing['advisor_name'], '')

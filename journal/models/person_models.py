@@ -31,22 +31,24 @@ class School(Group):
 class Person(User):
     class Meta:
         abstract = True
-    school = models.ForeignKey(School, null=True)
+    school = models.ForeignKey(School)
 
 
 class Coordinator(Person):
-    coordinator_type = models.IntegerField()
+    coordinator_type = models.IntegerField() # Diploma, middle, elementary
 
 
 class Advisor(Person):
-    advisor_type = models.IntegerField()
-    advisor_coordinator = models.ForeignKey(Coordinator, null=True)
+    advisor_type = models.IntegerField() # Diploma, middle, elementary
+    advisor_coordinator = models.ForeignKey(Coordinator)
 
 
 class Student(Person):
     """The students that will be using the site."""
     personal_code = models.CharField(max_length=6)
     student_id = models.CharField(max_length=4)
+    grad_month = models.IntegerField()
     grad_year = models.IntegerField()
     student_advisor = models.ForeignKey(Advisor, null=True)
+    # TODO: Remove null from the following field
     student_coordinator = models.ForeignKey(Coordinator, null=True)

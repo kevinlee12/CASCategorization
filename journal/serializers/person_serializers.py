@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from journal.models import Student, Advisor, Coordinator
+from journal.models import Student, Advisor, Coordinator, School
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -7,7 +7,7 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = ('first_name', 'last_name', 'personal_code', 'student_id',
-                  'grad_year', 'advisor', 'coordinator', 'school')
+                  'grad_month', 'grad_year', 'advisor', 'coordinator', 'school')
 
 
 class AdvisorSerializer(serializers.ModelSerializer):
@@ -23,3 +23,9 @@ class CoordinatorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coordinator
         fields = ('first_name', 'last_name', 'coordinator_type', 'school')
+
+class SchoolSerializer(serializers.ModelSerializer):
+    """School model serializer"""
+    class Meta:
+        model = School
+        field = ('name', 'school_id', 'address', 'city', 'state', 'country')

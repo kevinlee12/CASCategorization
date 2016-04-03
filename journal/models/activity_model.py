@@ -1,5 +1,5 @@
 from django.db import models
-from .entry_model import Entry
+from tinymce.models import HTMLField
 
 
 class Activity(models.Model):
@@ -11,7 +11,23 @@ class Activity(models.Model):
     learning_obj = models.CommaSeparatedIntegerField(max_length=8)  # 1,...,8
     start_date = models.DateField(auto_now=True)
     end_date = models.DateField(blank=True, null=True)
-    entries = models.ForeignKey(Entry, on_delete=models.CASCADE)
+
+    # Activity advisor information.
+    # This is different from the school advisor, which has a model!
+    advisor_name = models.CharField(max_length=30, blank=True)
+    advisor_title = models.CharField(max_length=30, blank=True)
+    advisor_email = models.EmailField(blank=True)
+    advisor_phone = models.CharField(max_length=12, blank=True)
+    # TODO: Move field to form validation
+    # advisor_phone = localflavor_models.PhoneNumberField(blank=True)
+
 
     class Meta:
         ordering = ('start_date',)
+
+
+class Entry(models.Model):
+    """The Entry model that stores the student activity"""
+
+    activity = models.ForeignKey(Activity)
+    entry = HTMLField()
