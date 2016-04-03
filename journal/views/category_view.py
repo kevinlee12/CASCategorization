@@ -26,7 +26,8 @@ class CategoryJSONView(View):
         with open(file_name) as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
-                types[row[0]] = row[1]
+                index, category = row
+                types[index] = category
         return types
 
 
