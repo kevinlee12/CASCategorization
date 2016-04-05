@@ -9,4 +9,5 @@ class HomeView(TemplateView):
 
     def get(self, request):
         """Returns the home page"""
-        return render(request, self.template_name, locals())
+        links = ['/categories/cas', '/categories/learning_objectives']
+        return render(request, self.template_name, {'links': links})
