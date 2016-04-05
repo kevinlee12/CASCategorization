@@ -7,7 +7,7 @@ Because of the limitations of Heroku, this application will be employing
 
 ## System Requirements:
 - Python 3
-- (coming soon) PostgreSQL
+- PostgreSQL
 
 ## Local Setup:
 1. Ensure that Python 3 is installed on your local machine.
@@ -28,9 +28,6 @@ Because of the limitations of Heroku, this application will be employing
 Pip is our main package management file, as such, please install packages using
 Pip whenever possible. Thus, when executing `pip freeze > requirements.txt`,
 please ensure that the requirements.txt file does **not** have scipy.
-
-### TODO:
-- Setup script for Conda setup
 
 **Requirement file notes:** Scipy cannot be installed via pip
 because of its required dependencies (BLAS/Lapack). Therefore, it is not in
