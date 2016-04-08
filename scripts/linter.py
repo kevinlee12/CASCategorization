@@ -1,15 +1,15 @@
-import subprocess
-import sys
+from subprocess import run, PIPE
+from sys import exit
 
 def run_py_lint(config):
     print('Running Python linter')
-    options = '--rcfile='.format(config)
-    journal = subprocess.run(['pylint', 'journal/', options],
-                             stderr=subprocess.PIPE)
-    cas = subprocess.run(['pylint', 'cas/', options], stderr=subprocess.PIPE)
+    options = '--rcfile={0}'.format(config)
+    journal = run(['pylint', 'journal/', options],
+                             stderr=PIPE)
+    cas = run(['pylint', 'cas/', options], stderr=PIPE)
     if journal.returncode or cas.returncode:
         print('There are 1 (or more) python linting error(s).')
-        sys.exit(1)
+        exit(1)
     return
 
 if __name__ == '__main__':
