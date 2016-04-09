@@ -1,9 +1,13 @@
 CAS Categorization
 ==================
+[![Circle CI](https://circleci.com/gh/WildCAS/CASCategorization/tree/develop.svg?style=svg)](https://circleci.com/gh/WildCAS/CASCategorization/tree/develop)
 
 CAS Categorization is a playground the test the categorizing CAS Activities.
 Because of the limitations of Heroku, this application will be employing
-[Conda](http://conda.pydata.org/docs/) to manage our libraries.
+[Conda](http://conda.pydata.org/docs/) to manage our libraries. Check out
+our hosted versions:
+- [Stable](http://wildcats.herokuapp.com/)
+- [Beta](https://wildcats-staging.herokuapp.com/)
 
 ## System Requirements:
 - Python 3
@@ -32,3 +36,18 @@ please ensure that the requirements.txt file does **not** have scipy.
 **Requirement file notes:** Scipy cannot be installed via pip
 because of its required dependencies (BLAS/Lapack). Therefore, it is not in
 requirements.txt file.
+
+## License
+Copyright 2016 The WildCAS Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS-IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
