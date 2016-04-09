@@ -22,18 +22,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-try:
+if os.environ.get('SECRET_KEY'):
     SECRET_KEY = os.environ['SECRET_KEY']
-except KeyError:
+else:
     SECRET_KEY = '9alm%7ty(*%)$$wanj5!k&vg_x#=3^*d^k*==t2*!7(6m-#ji&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-try:
-    DEBUG = os.environ['DEBUG_SETTING']  # Only true on production server
-except KeyError:
-    DEBUG = True
+DEBUG = not bool(os.environ.get('TOGGLE_PROD_SETTING'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '0.0.0.0',
+]
+
+# Security Settings
+SECURE_HSTS_SECONDS = 3
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = bool(os.environ.get('TOGGLE_PROD_SETTING'))
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
 
 # For authentication
 AUTHENTICATION_BACKENDS = (
