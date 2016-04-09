@@ -1,7 +1,6 @@
 machine:
   environment:
       DATABASE_URL: 'postgres://ubuntu:@127.0.0.1:5432/circle_test'
-      TOGGLE_PROD_SETTING: 'True'
   python:
     version: 3.5.0
   services:
