@@ -3,12 +3,8 @@ set -e
 
 OS=`uname`
 
-if [[ "${BASH_SOURCE[0]}" != "scripts/setup.sh" ]]; then
-	cat <<-EOF
-		This script must be run from the root folder.
-		Please go to the project root and run 'bash scripts/setup.sh'
-	EOF
-fi
+# Set the working directory to the root of the git repo.
+cd $(git rev-parse --show-toplevel)
 
 if [[ "${OS}" == "Darwin" ]]; then
 	miniconda_file="Miniconda3-latest-MacOSX-x86_64.sh"
@@ -16,6 +12,11 @@ else
 	miniconda_file="Miniconda3-latest-Linux-x86_64.sh"
 fi
 miniconda_link="https://repo.continuum.io/miniconda/${miniconda_file}"
+
+echo "Installing git hooks."
+cd .git/hooks
+ln --force --symbolic ../../scripts/pre-push.sh pre-push
+cd -
 
 echo "Checking if Conda is installed..."
 if [ ! -e ~/miniconda*/ ]; then
@@ -76,7 +77,6 @@ if [ $? -ne 0 ]; then
 fi
 python manage.py test
 
-source deactivate
 cat <<CAS
 Setup complete!
 This project must run in the conda 'cas' environment to work properly.

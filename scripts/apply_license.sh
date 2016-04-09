@@ -1,6 +1,8 @@
 #!/bin/sh
 
-starting_dir=$(pwd)
+# Set the working directory to the root of the git repo.
+cd $(git rev-parse --show-toplevel)
+
 license_num_lines=$(wc -l < scripts/license_header)
 license_header=$(cat scripts/license_header)
 
