@@ -33,6 +33,8 @@ DEBUG = not bool(os.environ.get('TOGGLE_PROD_SETTING'))
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
+    'wildcats-staging.herokuapp.com',
+    'wildcats.herokuapp.com'
 ]
 
 # Security Settings
