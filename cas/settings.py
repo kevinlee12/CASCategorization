@@ -33,8 +33,8 @@ DEBUG = not bool(os.environ.get('TOGGLE_PROD_SETTING'))
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
+    'wildcats.herokuapp.com',
     'wildcats-staging.herokuapp.com',
-    'wildcats.herokuapp.com'
 ]
 
 # Security Settings
@@ -47,6 +47,9 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
+
+# Honor requests from https
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # For authentication
 AUTHENTICATION_BACKENDS = (
