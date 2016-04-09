@@ -7,7 +7,7 @@ class Activity(models.Model):
 
     name = models.TextField()
     description = models.TextField()
-    activity_type = models.CommaSeparatedIntegerField(max_length=3)  # CAS: 1,2,3
+    activity_type = models.CommaSeparatedIntegerField(max_length=3) # CAS: 1,2,3
     learning_obj = models.CommaSeparatedIntegerField(max_length=8)  # 1,...,8
     start_date = models.DateField(auto_now=True)
     end_date = models.DateField(blank=True, null=True)
