@@ -80,7 +80,7 @@ def extractor(filename):
         cas_reader = csv.reader(cas_file, delimiter=',')
         for row in cas_reader:
             activity_names.append(row[0])
-            activity_types.append([tp for tp in row[1:] if tp])
+            activity_types.append([int(tp) for tp in row[1:] if int(tp)])
     return (activity_names, activity_types)
 
 
