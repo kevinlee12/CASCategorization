@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from tinymce.models import HTMLField
 
@@ -21,6 +23,7 @@ class Activity(models.Model):
     # TODO: Move field to form validation
     # advisor_phone = localflavor_models.PhoneNumberField(blank=True)
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     class Meta:
         ordering = ('start_date',)
@@ -31,3 +34,4 @@ class Entry(models.Model):
 
     activity = models.ForeignKey(Activity)
     entry = HTMLField()
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

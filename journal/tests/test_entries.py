@@ -10,7 +10,7 @@ class EntryTestCase(TestCase):
 
 
     def setUp(self):
-        cat_a = ActivityFactory.create(
+        cat_a = ActivityFactory.build(
             name='Walking the cat',
             description='Walking the cat around the block',
             activity_type='1', learning_obj='1,2,3',
@@ -25,3 +25,4 @@ class EntryTestCase(TestCase):
         """Checks if the entries were properly created"""
         cat_entry = Entry.objects.get(entry='I like walking the cat')
         self.assertEqual(cat_entry.entry, 'I like walking the cat')
+        self.assertNotEqual(cat_entry.id, 1)

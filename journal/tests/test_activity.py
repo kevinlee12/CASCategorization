@@ -2,7 +2,9 @@ import datetime
 import factory
 
 from django.test import SimpleTestCase
+from django.test import TransactionTestCase
 from journal.tests.factories import ActivityFactory
+from journal.models import Activity
 
 
 class ActivityTestCase(SimpleTestCase):
@@ -37,3 +39,20 @@ class ActivityTestCase(SimpleTestCase):
                                 start_date=datetime.date.today)
         self.assertEqual(nothing['name'], 'Nothing')
         self.assertEqual(nothing['advisor_name'], '')
+
+class ActivityDBTestCase(TransactionTestCase):
+    """Tests to ensure that the DB behaves as expected"""
+
+    def test_id_is_uuid(self):
+        """Tests that the UUID of Activity is not """
+        activity = Activity.objects.create(name='Walking the cat',
+                                           description='Walking the cat around '
+                                                       'the block',
+                                           activity_type='1',
+                                           learning_obj='1,2,3',
+                                           start_date=datetime.date.today,
+                                           advisor_name='Cat',
+                                           advisor_title='The Great Meow',
+                                           advisor_email='lion@cat.awe',
+                                           advisor_phone='737-041-5511')
+        self.assertNotEqual(activity.id, 1)

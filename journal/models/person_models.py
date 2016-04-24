@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
@@ -36,11 +38,13 @@ class Person(User):
 
 class Coordinator(Person):
     coordinator_type = models.IntegerField() # Diploma, middle, elementary
+    mk = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
 
 class Advisor(Person):
     advisor_type = models.IntegerField() # Diploma, middle, elementary
     advisor_coordinator = models.ForeignKey(Coordinator)
+    mk = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
 
 class Student(Person):
@@ -52,3 +56,4 @@ class Student(Person):
     student_advisor = models.ForeignKey(Advisor, null=True)
     # TODO: Remove null from the following field
     student_coordinator = models.ForeignKey(Coordinator, null=True)
+    mk = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
