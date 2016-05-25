@@ -16,7 +16,7 @@ const-rgx=^(([A-Z_][A-Z0-9_]*)|(__.*__)|([a-z_]+_models)|([a-z_]+_services))$
 good-names=e,_,d,c,f,i,l,p,w,fn,fs,id,pc,sc,zf,setUp,tearDown,longMessage,maxDiff,mk
 
 # Regex for dummy variables (to prevent 'unused argument' errors)
-dummy-variables-rgx=_|unused_*|request|args|kwargs
+dummy-variables-rgx=_|unused_*|request|\*args|\*kwargs
 
 # Ignore files or directories
 ignore=migrations
