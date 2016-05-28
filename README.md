@@ -1,5 +1,7 @@
 CAS Categorization
 ==================
+
+[![Join the chat at https://gitter.im/WildCAS/CASCategorization](https://badges.gitter.im/WildCAS/CASCategorization.svg)](https://gitter.im/WildCAS/CASCategorization?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Circle CI](https://circleci.com/gh/WildCAS/CASCategorization/tree/develop.svg?style=svg)](https://circleci.com/gh/WildCAS/CASCategorization/tree/develop)
 
 CAS Categorization is a playground the test the categorizing CAS Activities.
