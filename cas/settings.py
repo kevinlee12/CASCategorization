@@ -133,10 +133,10 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cas',
-        'USER': 'cas',
-        'PASSWORD': 'cas',
-        'HOST': 'localhost'
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
