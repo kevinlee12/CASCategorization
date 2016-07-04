@@ -1,24 +1,29 @@
 machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   environment:
       DATABASE_URL: 'postgres://ubuntu:@127.0.0.1:5432/circle_test'
-  python:
-    version: 3.5.1
   services:
+    - docker
     - postgresql
 
 dependencies:
-  cache_directories:
-    - ~/miniconda
-
-  pre:
-    - bash scripts/conda_circle_setup.sh
-    - source activate cas
+  override:
+    - sudo pip install docker-compose
+    - docker-compose build
 
 test:
-  pre:
-    - python manage.py collectstatic --noinput
-    - python scripts/linter.py
-    - python scripts/deploy_check.py
+  override:
+    # Connect Postgres
+    - sudo bash -c "echo \"listen_addresses = '*'\" >>
+      /etc/postgresql/9.5/main/postgresql.conf"
+    - sudo bash -c "echo \"host all all 0.0.0.0/0 trust\" >>
+      /etc/postgresql/9.5/main/pg_hba.conf"
+    - sudo /etc/init.d/postgresql restart
+    - docker-compose run web python manage.py collectstatic --noinput
+    - docker-compose run web python scripts/linter.py
+    - docker-compose run web python scripts/deploy_check.py
+    - docker-compose run web python manage.py test
 
 # TODO
 # test:
