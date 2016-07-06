@@ -11,4 +11,6 @@ services:
       - "8000:8000"
     external_links:
       - psql
-    entrypoint: dockerize -wait tcp://127.0.0.1:5432
+    entrypoint: dockerize -wait tcp://db:5432
+    extra_hosts:
+      -"db:0.0.0.0"
