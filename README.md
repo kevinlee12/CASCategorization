@@ -2,7 +2,7 @@ CAS Categorization
 ==================
 [![Circle CI](https://circleci.com/gh/WildCAS/CASCategorization/tree/develop.svg?style=svg)](https://circleci.com/gh/WildCAS/CASCategorization/tree/develop)
 
-If you want to get started right away, see the [No-Nonsense Instructions](#No-Nonsense Instructions). For a more detailed explanation see our [Docker wiki](https://github.com/WildCAS/CASCategorization/wiki/Docker).
+If you want to get started right away, see the [No-Nonsense Instructions](#no-nonsense-instructions). For a more detailed explanation see our [Docker wiki](https://github.com/WildCAS/CASCategorization/wiki/Docker).
 
 ## No-Nonsense Instructions:
 1. Clone repo.
